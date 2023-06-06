@@ -17,6 +17,10 @@ export default class User extends BaseModel {
   @column()
   public password: string
 
+  @column()
+  public rememberMeToken?: string
+  
+
   @beforeCreate()
   public static async generateUUID(user: User) {
     user.id = randomUUID()
