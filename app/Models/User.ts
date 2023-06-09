@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, HasOne, beforeCreate, beforeSave, column, hasOne } from '@ioc:Adonis/Lucid/Orm'
 import Hash from '@ioc:Adonis/Core/Hash'
 import {randomUUID} from "node:crypto"
+import Profile from './Profile'
 
 
 export default class User extends BaseModel {
@@ -10,6 +11,17 @@ export default class User extends BaseModel {
 
   @column()
   public name: string
+
+  @hasOne(() => Profile, {
+    foreignKey: 'id',
+    localKey: 'profile_id',
+  })
+  public profile: HasOne<typeof Profile>
+
+
+  @column({ columnName: 'profile_id' })
+  public profileId: string
+
 
   @column()
   public email: string

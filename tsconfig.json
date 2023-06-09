@@ -32,7 +32,8 @@
       "@adonisjs/lucid",
       "@adonisjs/auth",
       "adonis5-jwt",
-      "@adonisjs/redis"
+      "@adonisjs/redis",
+      "@adonisjs/attachment-lite"
     ]
   }
 }
