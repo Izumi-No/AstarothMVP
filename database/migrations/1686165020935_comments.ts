@@ -5,7 +5,16 @@ export default class extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.string('id').primary()
+      table.string('content').notNullable()
+      table.string('post_id').unsigned().references("id").inTable("posts").onDelete("CASCADE")
+      table.string('parent_id').unsigned().references("id").inTable("comments").onDelete("CASCADE")
+      table.string('author_id').unsigned().references("id").inTable("users").onDelete("CASCADE").notNullable()
+      table.string('status').defaultTo('ACTIVE')
+      table.timestamp('published_at')
+      table.timestamp('deleted_at')
+
+
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

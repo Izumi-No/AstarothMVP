@@ -31,7 +31,7 @@ export default class Post extends BaseModel {
   public authorId: string
 
   @column()
-  public status: string
+  public status: string = 'ACTIVE'
 
   @column()
   public publishedAt: DateTime

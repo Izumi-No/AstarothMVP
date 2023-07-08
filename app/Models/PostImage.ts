@@ -13,8 +13,7 @@ export default class PostImage extends BaseModel {
   @belongsTo(() => Post)
   public post: BelongsTo<typeof Post>
 
-  @column()
-  public post_id: string
+
 
   @attachment()
   public image: AttachmentContract
